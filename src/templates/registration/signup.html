@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+{% comment %} <div class="col-md-6 mx-auto">
+    <form method="post" class="mt-5">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type='submit' class=" btn btn-primary col-md-6">
+            Signup
+        </button>
+    </form>
+    <div class="py-5 border-t border-gray-200 mt-5">
+        <a class="hover:text-blue-500" href="{% url 'login' %}">Already have an account?</a>
+    </div>
+</div> {% endcomment %}
+
+<main>
+	<div class="container-fluid bg-trasparent  my-4 p-3" style="position: relative;">
+		<div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+			<div class="col mx-auto">
+				<div class="card h-100 shadow-sm"> 
+					<div class="card-body">
+                        <form method="post" class="mt-5">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <button type='submit' class=" btn btn-primary col-md-6">
+                                Signup
+                            </button>
+                        </form>
+                    </div>
+				</div>
+			</div>
+			
+			
+			
+		</div>
+	</div>
+</main>
+{% endblock content %}

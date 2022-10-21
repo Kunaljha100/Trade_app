@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<main>
+	<div class="container-fluid bg-trasparent  my-4 p-3" style="position: relative;">
+		<div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+			<div class="col mx-auto">
+				<div class="card h-100 shadow-sm"> 
+					<div class="card-body">
+						<div class="clearfix mb-3">
+            
+							<span class=" text-center badge rounded-pill bg-primary">{{book.Book_id}}</span>
+                            <div class="flex border-t border-b mb-6 border-gray-300 py-2">
+                                <span class="text-gray-500">Book ID</span>
+                                <span class="ml-auto text-gray-900 "><b>{{ book.Book_id }}</b></span>
+                            </div>
+							<div class="flex border-t border-b mb-6 border-gray-300 py-2">
+                                <span class="text-gray-500">Book Title</span>
+                                <span class="ml-auto text-gray-900 "><b>{{ book.Book_title }}</b></span>
+                            </div>
+                        <div class="flex card-title border-t border-b mb-6 border-gray-300 py-2">
+                            <span class="text-gray-500">descriptions:</span>
+                            <span class="ml-auto text-gray-900 "><b>{{book.description}}</b></span>
+                        </div>
+                        <div class="flex border-t border-b mb-6 border-gray-300 py-2">
+                            <span class="text-gray-500">Book Author</span>
+                            <span class="ml-auto text-gray-900">{{ book.Book_author }}</span>
+                        </div>
+                        <div class="flex border-t  border-b mb-6 border-gray-300 py-2">
+                            <span class="text-gray-500">Status</span>
+                            <span class="ml-auto text-gray-900">{{ book.Status }}</span>
+                        </div>
+                        <div class="flex border-t border-b mb-6 border-gray-300 py-2">
+                            <span class="text-gray-500">Issued:</span>
+                            <span class="ml-auto text-gray-900">{{ book.Issued_to }}</span>
+                        </div>
+                       
+						
+					</div>
+				</div>
+			</div>
+			
+			
+			
+		</div>
+	</div>
+</main>
+
+
+{% endblock content %}

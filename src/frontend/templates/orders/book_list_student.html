@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="text-gray-700 body-font">
+    <div class="container px-5 py-24 mx-auto flex flex-wrap">
+        <div class="w-full mb-6 py-6 flex justify-between items-center border-b border-gray-200">
+
+            
+            <div>
+                
+            </div>
+            {% if request.user.is_authenticated %}
+            <div>
+                
+            </div>
+            <div>
+                <a class="text-gray-500 hover:text-blue-500 nav-link" href="{% url 'create_book' %}">
+                    <i class="fas fa-plus fa-2x"></i>
+                </a>
+             
+                 
+            </div>
+            {% endif %}
+        </div>
+        
+    <div class="input-group col-md-6 mt-3 col-sm-6 mb-3">
+        <select name="{{lead_list}}" id="ddlContent" class="form-control" onchange="SelectedTextValue(this)">
+           <option value="Nothing">select</option>
+           {% for i in response %}
+           <option value="{{i.Book_id}}">{{i.Book_id}}</option>
+           {% endfor %}
+  
+       </select>
+        <input type="text" class="form-control" id="myInput" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <button type="submit" onclick="myFunction()"  class="btn btn-primary"><span class="" id="basic-addon2"><i class="fa fa-search"></i></span>
+        </button>
+    </div>
+       
+                
+                    <div class="table-responsive shadow mb-5">
+                        <table class="table" id="myTable">
+                            <thead class="text-wrap text-uppercase text-white striped  bg-primary">
+                                <tr>
+                                    <th  class="title">
+                                       Book ID
+                                        </th>
+                                    <th  class="title">
+                                    Book Title
+                                    </th>
+                                    <th>
+                                        Description
+                                    </th>
+                                    <th>
+                                   Book Author
+                                    </th>
+                                    <th>
+                                   Status
+                                    </th>
+                                    <th>
+                                    Issued TO
+                                    </th>
+                                    
+                                    
+                                    
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                {% for i in response %}
+                                <tr>
+                                    <td>{{i.Book_id}}</td>
+                                    <td>{{ i.Book_title }}</td>
+                                    <td>{{ i.description }}</td>
+                                    <td>{{ i.Book_author }}</td>
+                                    <td>
+                                       {{i.Status}}
+                                    </td>
+                                    <td>
+                                        {{i.Issued_to}}
+                                     </td>
+                                    
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            
+                        </table>
+                    </div>
+</section>
+
+
+
+<script>
+    function myFunction() {
+        var input, filter, table, tr, td, i, j, cellValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        console.log("TR:",tr)
+        console.log("table",table)
+        for (i = 0; i <tr.length; i++) {
+     td =tr[i].getElementsByTagName("td");
+     if (td) {
+        for (j =0; j < td.length; j++) {
+     cellValue =td[j].textContent || td[j].innerText;
+     if (cellValue.trim().toUpperCase().indexOf(filter) > -1) {
+     tr[i].style.display = "";
+        break;
+        } else {
+        tr[i].style.display = "none";
+        }
+        }
+        }
+        }
+        }
+        function SelectedTextValue(ele) {
+        if (ele.selectedIndex > 0) {
+        var selectedText = ele.options[ele.selectedIndex].innerHTML;
+        var selectedValue = ele.value;
+        document.getElementById("myInput").value = selectedText;
+        }
+        else {
+        document.getElementById("myInput").value = "";
+        }
+        }
+       
+</script>
+
+
+{% endblock content %}

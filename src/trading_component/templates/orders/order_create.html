@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+    
+
+
+
+
+<main>
+    <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3 mx-auto">
+        <a class=" col flex nav-link" href="{% url 'home' %}">Go back to Home</a>
+        
+    </div>
+	<div class="container-fluid bg-trasparent  my-4 p-3" style="position: relative;">
+        
+		<div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+			<div class="col mx-auto">
+               
+				<div class="card h-100 shadow-sm"> 
+					<div class="card-body">
+						<div class="clearfix mb-3">
+              
+                            <span class=" text-center badge rounded-pill bg-primary">{{book.Book_id}}</span>
+                                          <div class="flex border-t border-b mb-6 border-gray-300 py-2">
+                                            <h6  class="text-4xl pb-3 text-gray-800">Add a new order</h6>
+                                            <form method="post" enctype="multipart/form-data">
+                                              {% csrf_token %}
+                                              <label for="entry_price">ENtry price</label>
+                                              <input type="text" name="entry_price">
+                                              <label for="quantity">Quantity</label>
+                                              <input type="text" name="quantity">
+                                              <!-- <label for="trade_type">Trade Type</label>
+                                              <input type="text" name="trade_type"> -->
+                                              <label for="select"> Trade Type  </label>
+                                                <select class="form-select form-control  "  name="trade_type"  id="loantype" aria-label="Default select example">
+                                                        <option value="Buy" selected>Buy</option>
+                                                        <option value="Sell">Sell</option>                                                
+                                                </select>
+                                            
+                                              <button type="submit" class="btn mt-5 col-md-12  mx-auto d-block btn-primary ">Submit</button>
+                                          </form>
+                                          </div>
+                           
+                                     
+                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</main>
+
+{% endblock content %}
